@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>내 미니게임</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+  <h1>🔥 클릭 게임 🔥</h1>
+  <p>점수: <span id="score">0</span></p>
+  <button onclick="addScore()" style="font-size:20px;">클릭!</button>
+
+  <script>
+    let score = 0;
+    function addScore(){
+      score++;
+      document.getElementById("score").innerText = score;
+    }
+  </script>
+</body>
+</html>
