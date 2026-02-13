@@ -1,86 +1,165 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>XION Homepage</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XION | Portfolio</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #111, #1e1e2f);
-      color: white;
-      text-align: center;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-    header {
-      padding: 60px 20px;
-    }
+:root {
+  --bg: #0f0f1a;
+  --text: #ffffff;
+  --primary: #00f7ff;
+  --secondary: #ff00ff;
+  --card: #1a1a2e;
+}
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+.light-mode {
+  --bg: #f5f5f5;
+  --text: #111;
+  --primary: #0066ff;
+  --secondary: #ff0066;
+  --card: #ffffff;
+}
 
-    p {
-      font-size: 18px;
-      opacity: 0.8;
-    }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    .section {
-      padding: 60px 20px;
-    }
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.4s;
+  scroll-behavior: smooth;
+}
 
-    .card {
-      background: #222;
-      padding: 20px;
-      margin: 20px auto;
-      width: 300px;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
+/* 네비 */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-      background: #333;
-    }
+nav a {
+  color: var(--primary);
+  text-decoration: none;
+}
 
-    footer {
-      padding: 20px;
-      background: #000;
-      font-size: 14px;
-      opacity: 0.6;
-    }
-  </style>
+.toggle-btn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  background: var(--secondary);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: white;
+}
+
+/* 섹션 */
+section {
+  min-height: 100vh;
+  padding: 120px 20px 60px;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  font-size: 48px;
+  color: var(--primary);
+  text-shadow: 0 0 15px var(--primary);
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: var(--secondary);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  width: 260px;
+  border-radius: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(20px);}
+  to { opacity:1; transform:translateY(0);}
+}
+
+/* 모바일 */
+@media(max-width:768px){
+  .card{ width:90%; }
+  h1{ font-size:36px; }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>👑 XION</h1>
-    <p>웹 개발 & 게임 제작 연습 중 🚀</p>
-  </header>
+<button class="toggle-btn" onclick="toggleMode()">🌍 Mode</button>
 
-  <div class="section">
-    <h2>🛠 내가 만든 것</h2>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-    <div class="card">
-      🎮 미니 게임 사이트
+<section id="home">
+  <h1>👑 XION</h1>
+  <p style="margin-top:20px;">Web Developer & Game Builder 🚀</p>
+</section>
+
+<section id="projects">
+  <h2>🛠 Projects</h2>
+  <div class="card-container">
+    <div class="card" onclick="location.href='project1.html'">
+      🎮 Mini Game Website
     </div>
 
-    <div class="card">
-      🌐 웹 서버 배포 성공
+    <div class="card" onclick="location.href='project2.html'">
+      🌐 Custom Web Server
     </div>
   </div>
+</section>
 
-  <div class="section">
-    <h2>📬 Contact</h2>
-    <p>Email: your@email.com</p>
-  </div>
+<section id="contact">
+  <h2>📬 Contact</h2>
+  <p>Email: your@email.com</p>
+</section>
 
-  <footer>
-    © 2026 XION. All Rights Reserved.
-  </footer>
+<footer style="text-align:center;padding:20px;opacity:0.6;">
+  © 2026 XION. All Rights Reserved.
+</footer>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("light-mode");
+}
+</script>
 
 </body>
 </html>
